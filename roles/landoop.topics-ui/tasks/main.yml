@@ -1,0 +1,37 @@
+- name: Clone Repository
+  git:
+    repo: https://github.com/Landoop/kafka-topics-ui
+    dest: /srv/topics-ui
+    force: true
+- name: Install Bower
+  npm:
+    name: bower
+    global: yes
+- name: Install HTTP Server
+  npm:
+    name: http-server
+    global: yes
+- name: Install Topics UI
+  npm:
+    path: /srv/topics-ui
+- name: Bower Install for Topics UI
+  bower:
+    path: /srv/topics-ui
+- name: Fetch Public IP Address
+  ipify_facts:
+- name: Place environment configuration
+  template:
+    src: env.js
+    dest: /srv/topics-ui/env.js
+- name: Place systemd unit
+  template:
+    src: topics-ui.service
+    dest: /etc/systemd/system/topics-ui.service
+  notify:
+  - reload systemd
+- name: Enable systemd unit
+  systemd:
+    name: topics-ui.service
+    enabled: true
+    force: true
+    state: started

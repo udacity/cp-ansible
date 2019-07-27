@@ -1,0 +1,37 @@
+- name: Clone Repository
+  git:
+    repo: https://github.com/Landoop/kafka-connect-ui
+    dest: /srv/connect-ui
+    force: true
+- name: Install Bower
+  npm:
+    name: bower
+    global: yes
+- name: Install HTTP Server
+  npm:
+    name: http-server
+    global: yes
+- name: Install Connect UI
+  npm:
+    path: /srv/connect-ui
+- name: Bower Install for Connect UI
+  bower:
+    path: /srv/connect-ui
+- name: Fetch Public IP Address
+  ipify_facts:
+- name: Place environment configuration
+  template:
+    src: env.js
+    dest: /srv/connect-ui/env.js
+- name: Place systemd unit
+  template:
+    src: connect-ui.service
+    dest: /etc/systemd/system/connect-ui.service
+  notify:
+  - reload systemd
+- name: Enable systemd unit
+  systemd:
+    name: connect-ui.service
+    enabled: true
+    force: true
+    state: started

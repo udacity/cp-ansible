@@ -1,0 +1,13 @@
+[Unit]
+Description=Landoop Kafka Topics UI
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/srv/topics-ui
+ExecStart=/usr/bin/http-server -p 8085 .
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
