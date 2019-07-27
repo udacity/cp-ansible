@@ -1,0 +1,13 @@
+[Unit]
+Description=Landoop Kafka Schema Registry UI
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/srv/schema-registry-ui/dist
+ExecStart=/usr/bin/http-server -p 8086 .
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

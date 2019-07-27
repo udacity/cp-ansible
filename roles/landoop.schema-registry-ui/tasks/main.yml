@@ -1,0 +1,41 @@
+- name: Clone Repository
+  git:
+    repo: https://github.com/Landoop/schema-registry-ui
+    dest: /srv/schema-registry-ui
+    force: true
+- name: Install Bower
+  npm:
+    name: bower
+    global: yes
+- name: Install HTTP Server
+  npm:
+    name: http-server
+    global: yes
+- name: Install Schema Registry UI
+  npm:
+    path: /srv/schema-registry-ui
+- name: Bower Install for Schema Registry UI
+  bower:
+    path: /srv/schema-registry-ui
+- name: Fetch Public IP Address
+  ipify_facts:
+- name: Place environment configuration
+  template:
+    src: env.js
+    dest: /srv/schema-registry-ui/env.js
+- name: Run webpack
+  command: /usr/bin/npm run build-prod
+  args:
+    chdir: /srv/schema-registry-ui
+- name: Place systemd unit
+  template:
+    src: schema-registry-ui.service
+    dest: /etc/systemd/system/schema-registry-ui.service
+  notify:
+  - reload systemd
+- name: Enable systemd unit
+  systemd:
+    name: schema-registry-ui.service
+    enabled: true
+    force: true
+    state: started

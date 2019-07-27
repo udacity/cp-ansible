@@ -1,0 +1,13 @@
+[Unit]
+Description=Landoop Kafka Connect UI
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/srv/connect-ui
+ExecStart=/usr/bin/http-server -p 8084 .
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
