@@ -1,5 +1,9 @@
 - hosts: preflight
   tasks:
+  - name: Install rsync
+    apt:
+      name: rsync
+      state: present
   - import_role:
       name: confluent.preflight
     tags:
