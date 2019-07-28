@@ -5,9 +5,22 @@
       name: rsync
       state: present
   - import_role:
-      name: postgresql
+      name: mdklatt.python3
+  - name: get docker-systemctl-replacement
+    git:
+      repo: https://github.com/gdraheim/docker-systemctl-replacement.git
+      dest: /srv/docker-systemctl-replacement
+      force: true
+  - name: update systemd
+    package: name="systemd" state="latest"
+  - name: install systemctl.py
+    copy: src="/srv/docker-systemctl-replacement/files/docker/systemctl3.py" dest="/usr/bin/systemctl"
+  - name: install systemctl.py
+    copy: src="/srv/docker-systemctl-replacement/files/docker/systemctl3.py" dest="/bin/systemctl"
   - import_role:
-      name: nodejs
+      name: geerlingguy.postgresql
+  - import_role:
+      name: geerlingguy.nodejs
   - import_role:
       name: confluent.preflight
     tags:

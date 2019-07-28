@@ -10,10 +10,8 @@ RUN ansible-galaxy install -r requirements.yml
 ADD all.yml all.yml
 ADD ansible.cfg ansible.cfg
 ADD hosts.yml hosts.yml
-ADD docs docs
 ADD plaintext plaintext
 ADD roles roles
 ADD sasl_ssl sasl_ssl
 ADD ssl ssl
-RUN ansible-playbook --list-hosts all.yml -i hosts.yml
-RUN XDG_RUNTIME_DIR=/run/user/0 ansible-playbook all.yml -i hosts.yml
+#RUN ansible-playbook all.yml -i hosts.yml

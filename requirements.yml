@@ -1,2 +1,4 @@
 - src: geerlingguy.postgresql
 - src: geerlingguy.nodejs
+- src: mdklatt.python
+- src: mdklatt.python3

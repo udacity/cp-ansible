@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=ubuntu
+User=cp-kafka
 WorkingDirectory=/srv/topics-ui
 ExecStart=/usr/bin/http-server -p 8085 .
 Restart=always
