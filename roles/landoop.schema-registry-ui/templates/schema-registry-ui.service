@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=cp-kafka
 WorkingDirectory=/srv/schema-registry-ui/dist
-ExecStart=/usr/bin/http-server -p 8086 .
+ExecStart=/usr/local/bin/http-server -p 8086 .
 Restart=always
 
 [Install]

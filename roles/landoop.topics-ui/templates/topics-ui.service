@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=cp-kafka
 WorkingDirectory=/srv/topics-ui
-ExecStart=/usr/bin/http-server -p 8085 .
+ExecStart=/usr/local/bin/http-server -p 8085 .
 Restart=always
 
 [Install]
