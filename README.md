@@ -1,3 +1,30 @@
+Ben's Udacity Notes:
+------------------------------------------------------------------------------------------------
+
+This installs the following components on localhost:
+• Zookeeper (single member ensemble)
+• Kafka (single member cluster)
+• Kafka Connect
+• Schema Registry
+• KSQL
+• REST Proxy
+• Kafka CLI Tools
+• Postgres
+• Landoop Kafka Topics UI
+• Landoop Schema Registry UI
+• Landoop Kafka Connect UI
+
+On a workspace host:
+```
+git clone https://github.com/benjigoldberg/cp-ansible.git
+cd cp-ansible
+git checkout 5.3.0-post
+sh install.sh
+```
+
+
+Confluent Notes:
+------------------------------------------------------------------------------------------------
 Please note that these playbooks are provided without support and are intended to be a guideline. Any issues encountered can be reported via the GitHub issues and will be addressed on a best effort basis. Pull requests are also encouraged.
 
 # Introduction
