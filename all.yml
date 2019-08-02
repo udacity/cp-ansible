@@ -26,8 +26,6 @@
   - import_role:
       name: geerlingguy.postgresql
   - import_role:
-      name: geerlingguy.nodejs
-  - import_role:
       name: confluent.preflight
     tags:
       - pre-install
