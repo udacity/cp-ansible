@@ -14,4 +14,4 @@ ADD plaintext plaintext
 ADD roles roles
 ADD sasl_ssl sasl_ssl
 ADD ssl ssl
-#RUN ansible-playbook all.yml -i hosts.yml
+RUN ansible-playbook all.yml -i hosts.yml
