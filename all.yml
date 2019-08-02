@@ -49,16 +49,6 @@
       name: confluent.tools
     tags:
       - post-install
-  - name: restart kafka
-    command: systemctl restart confluent-kafka
-  - name: restart schema registry
-    command: systemctl restart confluent-schema-registry
-  - name: restart kafka connect
-    command: systemctl restart confluent-kafka-connect
-  - name: restart kafka rest proxy
-    command: systemctl restart confluent-kafka-rest
-  - name: restart ksql
-    command: systemctl restart confluent-ksql
   - import_role:
       name: landoop.topics-ui
   - import_role:
